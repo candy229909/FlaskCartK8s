@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>購物車</title>
+</head>
+<body>
+    <h1>購物車</h1>
+    <ul>
+        {% for product in cart %}
+            <li>{{ product.name }} - ${{ product.price }}</li>
+        {% endfor %}
+    </ul>
+    <form action="{{ url_for('checkout') }}" method="post">
+        <button type="submit">結帳</button>
+    </form>
+</body>
+</html>

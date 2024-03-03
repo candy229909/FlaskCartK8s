@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: yourusername/nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: uwsgi-socket
+          mountPath: /tmp
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+          readOnly: true
+      volumes:
+      - name: uwsgi-socket
+        emptyDir: {}
+      - name: nginx-config
+        configMap:
+          name: nginx-config

@@ -1,0 +1,9 @@
+
+
+確保你已經配置好了 kubectl 並且連接到了你的 Kubernetes 集群。然後運行以下命令來部署這些資源：
+'''bash
+kubectl apply -f flask-deployment.yaml
+kubectl apply -f nginx-deployment.yaml
+kubectl apply -f nginx-configmap.yaml
+kubectl apply -f nginx-service.yaml
+'''
